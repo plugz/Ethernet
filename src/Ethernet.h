@@ -45,10 +45,13 @@
 // can really help with UDP protocols like Artnet.  In theory larger
 // buffers should allow faster TCP over high-latency links, but this
 // does not always seem to work in practice (maybe Wiznet bugs?)
-//#define ETHERNET_LARGE_BUFFERS
+#define ETHERNET_LARGE_BUFFERS
 
 // Make room for the RX buffer by disabling the TX buffer
-//#define ETHERNET_NO_TX
+#define ETHERNET_NO_TX
+
+#undef MAX_SOCK_NUM
+#define MAX_SOCK_NUM 1
 
 #include <Arduino.h>
 #include "Client.h"
