@@ -125,11 +125,18 @@ uint8_t W5100Class::init(void)
 #else
 		SSIZE = 2048;
 #endif
+#ifdef ETHERNET_NO_TX
+		SSIZE *= 2;
+#endif
 		SMASK = SSIZE - 1;
 #endif
 		for (i=0; i<MAX_SOCK_NUM; i++) {
 			writeSnRX_SIZE(i, SSIZE >> 10);
+#ifdef ETHERNET_NO_TX
+			writeSnTX_SIZE(i, 0);
+#else
 			writeSnTX_SIZE(i, SSIZE >> 10);
+#endif
 		}
 		for (; i<8; i++) {
 			writeSnRX_SIZE(i, 0);

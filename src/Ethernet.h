@@ -47,6 +47,8 @@
 // does not always seem to work in practice (maybe Wiznet bugs?)
 //#define ETHERNET_LARGE_BUFFERS
 
+// Make room for the RX buffer by disabling the TX buffer
+//#define ETHERNET_NO_TX
 
 #include <Arduino.h>
 #include "Client.h"
